@@ -18,8 +18,12 @@ var commentRoutes    = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
     indexRoutes      = require("./routes/index")
     
+//This for switching database depends on which environment you're on. Dev or Prod
+var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp_v10";       //add DATABASEURL env to Heroku app by going to Heroku/settings/config vars
+mongoose.connect(url);
+    
 // mongoose.connect("mongodb://localhost/yelp_camp_v9");
-mongoose.connect("mongodb://minh:minhtest1@ds139960.mlab.com:39960/minh_mean_db");
+//mongoose.connect("mongodb://minh:minhtest1@ds139960.mlab.com:39960/minh_mean_db");
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
